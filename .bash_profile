@@ -19,3 +19,6 @@ fi
 # set PATH so it includes user's private bin directories
 PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 LANG=ja_JP.UTF-8
+
+# ssh-agent
+[ -x `which ssh-agent` ] && eval `ssh-agent`
