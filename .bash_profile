@@ -23,3 +23,4 @@ LESSCHARSET=utf-8
 
 # ssh-agent
 [ -x `which ssh-agent` ] && eval `ssh-agent`
+[ -x `which ssh-add` ] && ssh-add
