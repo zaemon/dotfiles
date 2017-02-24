@@ -3,7 +3,8 @@ startup_message off
 defscrollback 10000
 zombie kr #  k: destory window, r: resurrect window
 verbose on
-logfile 'screen/log/screenlog.%H.%Y%m%d-%02c:%s-%n.%t.log'
+logfile "${HOME}/screen/log/screenlog.%H.%Y%m%d-%02c:%s-%n.%t.log"
+deflog on
 logtstamp on
 logtstamp string "\n-- SCREEN [%Y/%m/%d %02c:%s] %n:%t --\n"
 caption always '%?%F%{= gW}%:%{= Kk}%?%2n%f%07=%t%='
