@@ -1,0 +1,12 @@
+BoldAsFont=no
+Transparency=low
+FontHeight=14
+Columns=122
+Rows=59
+Font=Osaka|“™•
+Locale=ja_JP
+Charset=UTF-8
+BackspaceSendsBS=yes
+RightClickAction=paste
+Term=xterm-256color
+CursorType=block
