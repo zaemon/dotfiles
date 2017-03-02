@@ -1,0 +1,10 @@
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set number
+set smartindent
+set showcmd
+set showmatch
+set ignorecase
+set smartcase
+set incsearch
