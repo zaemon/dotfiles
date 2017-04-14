@@ -115,3 +115,13 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+if [ "$(uname)" == 'Darwin' ]; then
+    :
+elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    :
+elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
+    :
+else
+    :
+fi

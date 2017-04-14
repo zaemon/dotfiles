@@ -16,18 +16,27 @@ if [ -n "$BASH_VERSION" ]; then
     fi
 fi
 
+if [ "$(uname)" == 'Darwin' ]; then
+    :
+elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    :
+elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
+    alias mingw-get-search="mingw-get list | grep Package: | grep "
+    MSYSTEM=MINGW64
+    export MSYSTEM
+else
+    :
+fi
+
 # set PATH so it includes user's private bin directories
 PATH="${HOME}/bin:${HOME}/local/bin:/usr/bin:/usr/local/bin:${PATH}"
 LANG=ja_JP.UTF-8
 LESSCHARSET=utf-8
-MSYSTEM=MINGW64
 TERM=xterm-256color
 
-alias mingw-get-search="mingw-get list | grep Package: | grep "
 alias ls='ls -F --color=auto --show-control-chars'
 
 export PATH
 export LANG
 export LESSCHARSET
-export MSYSTEM
 export TERM
