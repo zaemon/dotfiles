@@ -8,3 +8,4 @@ set showmatch
 set ignorecase
 set smartcase
 set incsearch
+set fileformat=unix
