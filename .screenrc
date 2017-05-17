@@ -3,11 +3,20 @@ startup_message off
 defscrollback 10000
 zombie kr #  k: destory window, r: resurrect window
 verbose on
-logfile "${HOME}/screen/log/screenlog.%H.%Y%m%d-%02c:%s-%n.%t.log"
+altscreen on
+autodetach on
+shell $SHELL
+shelltitle '$ |bash'
+term xterm-256color
+
 deflog on
+logfile "${HOME}/screen/log/screenlog.%H.%Y%m%d-%02c:%s-%n.%t.log"
 logtstamp on
 logtstamp string "\n-- SCREEN [%Y/%m/%d %02c:%s] %n:%t --\n"
-caption always '%?%F%{= gW}%:%{= Kk}%?%2n%f%07=%t%='
-hardstatus alwayslastline '%m/%d %02c:%s %{= .g}%H%{-} %L=%-w%45L>%{=u g.}%n %t%{-}%+w %-17<%=%{= .y}(%l)'
+
+caption always '%?%F%{= bW}%:%{= Kk}%?%2n%f%07=%t%='
+sorendition '+r .b'
+hardstatus alwayslastline '%{= .b}%H%{-} %L=%-w%45L>%{=u b.}%n %t%{-}%+w %-17<%=%m/%d %02c:%s'
+
 defencoding utf8
 encoding utf8 utf8
