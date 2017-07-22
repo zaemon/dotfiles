@@ -33,9 +33,9 @@ PATH="${HOME}/bin:${HOME}/local/bin:/usr/bin:/usr/local/bin:${PATH}"
 LANG=ja_JP.UTF-8
 LESSCHARSET=utf-8
 TERM=xterm-256color
-GTK_IM_MODULE=fcitx
-XMODIFIERS=@im=fcitx
-QT_IM_MODULE=fcitx
+GTK_IM_MODULE=ibus
+XMODIFIERS=@im=ibux
+QT_IM_MODULE=ibus
 # Vagrant=VirtualBoxを使った場合のホスト側DISPLAYを参照する設定
 DISPLAY=$(netstat -rn | grep "^0.0.0.0 " | cut -d " " -f10):0.0
 
