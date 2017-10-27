@@ -19,8 +19,10 @@ fi
 if [ "$(uname)" == 'Darwin' ]; then
     :
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    alias ls='ls -F --color=auto --show-control-chars'
     :
 elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
+    alias ls='ls -F --color=auto --show-control-chars'
     alias mingw-get-search="mingw-get list | grep Package: | grep "
     MSYSTEM=MINGW64
     export MSYSTEM
@@ -39,7 +41,6 @@ QT_IM_MODULE=ibus
 # Vagrant=VirtualBoxを使った場合のホスト側DISPLAYを参照する設定
 DISPLAY=$(netstat -rn | grep "^0.0.0.0 " | cut -d " " -f10):0.0
 
-alias ls='ls -F --color=auto --show-control-chars'
 
 export PATH
 export LANG
