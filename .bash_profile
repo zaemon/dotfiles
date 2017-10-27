@@ -17,6 +17,7 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 if [ "$(uname)" == 'Darwin' ]; then
+    alias ls='ls -G'
     :
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     alias ls='ls -F --color=auto --show-control-chars'
