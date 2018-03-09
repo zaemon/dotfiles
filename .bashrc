@@ -118,6 +118,7 @@ fi
 
 if [ "$(uname)" == 'Darwin' ]; then
     alias ls='ls -G'
+    PATH=/usr/local/opt/openssl/bin:$PATH
     :
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     alias ls='ls -F --color=auto --show-control-chars'
