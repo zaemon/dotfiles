@@ -131,8 +131,9 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
 elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
     alias ls='ls -F --color=auto --show-control-chars'
     alias mingw-get-search="mingw-get list | grep Package: | grep "
-    MSYSTEM=MINGW64
-    export MSYSTEM
+    export MSYSTEM=MINGW64
+    # Vagrant=VirtualBoxを使った場合のホスト側DISPLAYを参照する設定
+    export DISPLAY=$(netstat -rn | grep "^0.0.0.0 " | cut -d " " -f10):0.0
     :
 else
     :
@@ -146,8 +147,6 @@ TERM=xterm-256color
 GTK_IM_MODULE=ibus
 XMODIFIERS=@im=ibux
 QT_IM_MODULE=ibus
-# Vagrant=VirtualBoxを使った場合のホスト側DISPLAYを参照する設定
-DISPLAY=$(netstat -rn | grep "^0.0.0.0 " | cut -d " " -f10):0.0
 
 
 export PATH
@@ -157,4 +156,3 @@ export TERM
 export GTK_IM_MODULE
 export XMODIFIERS
 export QT_IM_MODULE
-export DISPLAY
