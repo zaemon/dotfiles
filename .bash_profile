@@ -21,6 +21,9 @@ if [ "$(uname)" == 'Darwin' ]; then
     :
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     alias ls='ls -F --color=auto --show-control-chars'
+    PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+    MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+    INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
     :
 elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
     alias ls='ls -F --color=auto --show-control-chars'
