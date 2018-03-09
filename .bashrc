@@ -117,11 +117,43 @@ if ! shopt -oq posix; then
 fi
 
 if [ "$(uname)" == 'Darwin' ]; then
+    alias ls='ls -G'
     :
 elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    alias ls='ls -F --color=auto --show-control-chars'
+    PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+    MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+    INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+    export MANPATH
+    export INFOPATH
     :
 elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
+    alias ls='ls -F --color=auto --show-control-chars'
+    alias mingw-get-search="mingw-get list | grep Package: | grep "
+    MSYSTEM=MINGW64
+    export MSYSTEM
     :
 else
     :
 fi
+
+# set PATH so it includes user's private bin directories
+PATH="${HOME}/bin:${HOME}/local/bin:/usr/bin:/usr/local/bin:${PATH}"
+LANG=ja_JP.UTF-8
+LESSCHARSET=utf-8
+TERM=xterm-256color
+GTK_IM_MODULE=ibus
+XMODIFIERS=@im=ibux
+QT_IM_MODULE=ibus
+# Vagrant=VirtualBoxを使った場合のホスト側DISPLAYを参照する設定
+DISPLAY=$(netstat -rn | grep "^0.0.0.0 " | cut -d " " -f10):0.0
+
+
+export PATH
+export LANG
+export LESSCHARSET
+export TERM
+export GTK_IM_MODULE
+export XMODIFIERS
+export QT_IM_MODULE
+export DISPLAY
