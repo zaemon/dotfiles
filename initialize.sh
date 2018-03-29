@@ -3,7 +3,6 @@ ln -sf ~/dotfiles/.bashrc ~/
 ln -sf ~/dotfiles/.bash_logout ~/
 ln -sf ~/dotfiles/.docker ~/
 ln -sf ~/dotfiles/.gitconfig ~/
-ln -sf ~/dotfiles/.xprofile ~/
 ln -sf ~/dotfiles/.minttyrc ~/
 ln -sf ~/dotfiles/.vimrc ~/
 #ln -s ~/dotfiles/settings.json
