@@ -127,7 +127,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
     export MANPATH
     export INFOPATH
-    exec ibus-daemon -dxr &
+    exec ibus-daemon -dxr &   # ibus自動起動
     :
 elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
     alias ls='ls -F --color=auto --show-control-chars'
