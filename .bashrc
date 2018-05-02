@@ -147,6 +147,7 @@ TERM=xterm-256color
 GTK_IM_MODULE=ibus
 XMODIFIERS=@im=ibux
 QT_IM_MODULE=ibus
+IGNOREEOF=100
 
 
 export PATH
@@ -156,3 +157,4 @@ export TERM
 export GTK_IM_MODULE
 export XMODIFIERS
 export QT_IM_MODULE
+export IGNOREEOF
