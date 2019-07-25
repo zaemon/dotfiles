@@ -135,6 +135,7 @@ elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
     export MSYSTEM=MINGW64
     # Vagrant=VirtualBoxを使った場合のホスト側DISPLAYを参照する設定
     export DISPLAY=$(netstat -rn | grep "^0.0.0.0 " | cut -d " " -f10):0.0
+    export MSYS=winsymlinks:lnk
     :
 else
     :
@@ -159,3 +160,7 @@ export GTK_IM_MODULE
 export XMODIFIERS
 export QT_IM_MODULE
 export IGNOREEOF
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/vagrant/.sdkman"
+[[ -s "/home/vagrant/.sdkman/bin/sdkman-init.sh" ]] && source "/home/vagrant/.sdkman/bin/sdkman-init.sh"
