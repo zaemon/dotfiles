@@ -125,6 +125,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
     MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
     INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+    export VTE_CJK_WIDTH=1
     export MANPATH
     export INFOPATH
     exec ibus-daemon -dxr &   # ibus自動起動
@@ -136,6 +137,7 @@ elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
     # Vagrant=VirtualBoxを使った場合のホスト側DISPLAYを参照する設定
     export DISPLAY=$(netstat -rn | grep "^0.0.0.0 " | cut -d " " -f10):0.0
     export MSYS=winsymlinks:lnk
+    export VTE_CJK_WIDTH=1
     :
 else
     :
