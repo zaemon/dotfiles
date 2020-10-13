@@ -128,7 +128,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     export VTE_CJK_WIDTH=1
     export MANPATH
     export INFOPATH
-    fcitx-autostart  # fcitx自動起動
+    exec ibus-daemon -dxr &   # ibus自動起動
     :
 elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
     alias ls='ls -F --color=auto --show-control-chars'
