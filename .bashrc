@@ -162,7 +162,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     for ibusDaemonPidFile in `getIbusDaemonPidFiles`; do
       ibusDaemonPid=`getIbusDaemonPid "${ibusDaemonPidFile}"`
       ibusDaemonExists=`ibusDaemonProcessExists "${ibusDaemonPid}"`
-      if [ "${ibusDaemonExists}" = 1 ]; the
+      if [ "${ibusDaemonExists}" = 1 ]; then
         break
       fi
     done
