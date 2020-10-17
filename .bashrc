@@ -116,12 +116,21 @@ if ! shopt -oq posix; then
   fi
 fi
 
-getIbusDaemonPid() {
+getIbusDaemonPidFiles() {
   if [ ! -f ${HOME}/.config/ibus/bus/* ]; then
     echo ""
     return
   fi
-  cat ${HOME}/.config/ibus/bus/* | grep "IBUS_DAEMON_PID" | cut -d'=' -f2
+  ls -1 ${HOME}/.config/ibus/bus/*
+}
+
+getIbusDaemonPid() {
+  pidFile="${1}"
+  if [ ! -f "${pidFile}" ]; then
+    echo ""
+    return
+  fi
+  cat "${pidFile}" | grep "IBUS_DAEMON_PID" | cut -d'=' -f2
 }
 
 ibusDaemonProcessExists() {
@@ -149,9 +158,15 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     export VTE_CJK_WIDTH=1
     export MANPATH
     export INFOPATH
-    ibusDaemonPid=`getIbusDaemonPid`
-    exists=`ibusDaemonProcessExists "${ibusDaemonPid}"`
-    if [ "${exists}" = 0 ]; then
+    ibusDaemonExists=0
+    for ibusDaemonPidFile in `getIbusDaemonPidFiles`; do
+      ibusDaemonPid=`getIbusDaemonPid "${ibusDaemonPidFile}"`
+      ibusDaemonExists=`ibusDaemonProcessExists "${ibusDaemonPid}"`
+      if [ "${ibusDaemonExists}" = 1 ]; the
+        break
+      fi
+    done
+    if [ "${ibusDaemonExists}" = 0 ]; then
       exec ibus-daemon -dxr &      # ibus自動起動
     fi
     :
