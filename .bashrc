@@ -116,6 +116,27 @@ if ! shopt -oq posix; then
   fi
 fi
 
+getIbusDaemonPid() {
+  if [ ! -f ${HOME}/.config/ibus/bus/* ]; then
+    echo ""
+    return
+  fi
+  cat ${HOME}/.config/ibus/bus/* | grep "IBUS_DAEMON_PID" | cut -d'=' -f2
+}
+
+ibusDaemonProcessExists() {
+  pid="${1}"
+  user=`whoami`
+  processCount=`ps -ef | grep "^${user}" | grep "ibus-daemon" | wc -l`
+  if [ "${processCount}" = 1 ]; then
+    echo "0" # not exist
+    return
+  elif [ "${processCount}" = 2 ]; then
+    echo "1"
+    return
+  fi
+}
+
 if [ "$(uname)" == 'Darwin' ]; then
     alias ls='ls -G'
     PATH=/usr/local/opt/openssl/bin:$PATH
@@ -128,6 +149,11 @@ elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     export VTE_CJK_WIDTH=1
     export MANPATH
     export INFOPATH
+    ibusDaemonPid=`getIbusDaemonPid`
+    exists=`ibusDaemonProcessExists "${ibusDaemonPid}"`
+    if [ "${exists}" = 0 ]; then
+      exec ibus-daemon -dxr &      # ibus自動起動
+    fi
     :
 elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
     alias ls='ls -F --color=auto --show-control-chars'
