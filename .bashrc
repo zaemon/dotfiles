@@ -117,7 +117,7 @@ if ! shopt -oq posix; then
 fi
 
 getIbusDaemonPidFiles() {
-  if [ ! -f ${HOME}/.config/ibus/bus/* ]; then
+  if [ ! -d ${HOME}/.config/ibus/bus ]; then
     echo ""
     return
   fi
